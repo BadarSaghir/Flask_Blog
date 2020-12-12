@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% include 'header.html' %}
+
+<body>
+
+  <!-- Navigation -->
+  {% include 'navbar.html' %}
+
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('/static/img/home-bg.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+            <h1>Sardar Blog</h1>
+            <span class="subheading">A Blog for Learning</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        {% for posts in blog.get_all_posts() %}
+        <div class="post-preview">
+          <a href="{{ url_for('post', post=posts['title'],id=posts['id']) }}">
+            <h2 class="post-title">
+              {{posts['title']}}
+            </h2>
+            <h3 class="post-subtitle">
+              {{posts['subtitle']}}
+            </h3>
+          </a>
+          <p class="post-meta">Posted by {{posts['author']}}
+            <!-- <a href="{# url_for('post', post=posts['image_url']) #}">/a> -->
+            on {{posts['date']}}</p>
+        </div>
+        <hr>
+        {{blog.next_post()}}
+
+        {% endfor %}
+
+
+        <!-- Pager -->
+        <div class="clearfix">
+          <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  {% include 'footer.html' %}
+</body>
+
+</html>

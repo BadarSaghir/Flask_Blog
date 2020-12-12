@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% include 'header.html' %}
+
+<body>
+
+  {% include 'navbar.html' %}
+
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url({{post.image_url}})">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-heading">
+            <h1>{{post['title']}}</h1>
+            <h2 class="subheading">{{post['subtitle']}}</h2>
+            <span class="meta">Posted by {{post['author']}}
+              <!-- <a href="#">Start Bootstrap</a> -->
+              on {{post['date']}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Post Content -->
+  <article>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+
+          {{post['body']}}
+
+          <a href="#">
+            <img class="img-fluid" src="{{post.image_url}}" alt="">
+          </a>
+
+
+
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <hr>
+
+  <!-- Footer -->
+  {% include 'footer.html' %}
+</body>
+
+</html>
